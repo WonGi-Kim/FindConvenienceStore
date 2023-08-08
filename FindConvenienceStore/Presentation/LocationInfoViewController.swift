@@ -6,8 +6,8 @@
 //
 
 import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
 import CoreLocation
 import SnapKit
 
@@ -23,15 +23,28 @@ class LocationInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mapView.delegate = self
+        locationManager.delegate = self
+        
         bind(viewModel)
         attribute()
         layout()
     }
     
-    func bind(_ viewModel: LocationInfoViewModel) {
+    private func bind(_ viewModel: LocationInfoViewModel) {
+        //  viewModel 바인딩 과정
+        viewModel.setMapCenter
+            .emit(to: mapView.rx.setMapCenterPoint)
+            .disposed(by: disposeBag)
+        
+        //  에러 메시지 연결, alert컨트롤러 생성
+        viewModel.errorMessage
+            .emit(to: self.rx.presentAlert)
+            .disposed(by: disposeBag)
+        
         currentLocationButton.rx.tap
             .bind(to: viewModel.currentLocationButtonTapped)
-            .dispose(by: disposeBag)
+            .disposed(by: disposeBag)
     }
     
     func attribute() {
@@ -64,6 +77,78 @@ class LocationInfoViewController: UIViewController {
             $0.bottom.equalTo(detailList).offset(-12)
             $0.leading.equalToSuperview().offset(12)
             $0.width.height.equalTo(40)
+        }
+    }
+}
+
+
+//  MARK: - Delegate 설정
+//  MARK: CLLocationManagerDelegate
+extension LocationInfoViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager:CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus){
+        switch status {
+        case .authorizedAlways,
+             .authorizedWhenInUse,
+             .notDetermined:
+            return
+        default:
+            viewModel.mapViewError.accept(MTMapViewError.locationAuthorizationDenied.errorDescription)
+            return
+        }
+    }
+}
+
+//  MARK: MTMapViewDelegate
+extension LocationInfoViewController: MTMapViewDelegate {
+    func mapView(_ mapView: MTMapView!, updateCurrentLocation location: MTMapPoint!, withAccuracy accuracy: MTMapLocationAccuracy) {
+        // 디버그, 시뮬레이터 모드의 경우 임의의 좌표값을 입력
+        #if DEBUG
+        viewModel.currentLocation.accept(MTMapPoint(geoCoord: MTMapPointGeo(latitude: 37.46319, longitude: 126.70078)))
+        #else
+        viewModel.currentLocation.accept(location)
+        #endif
+    }
+    
+    //  맵의 이동이 끝났을 때 센터 포인트 전송
+    func mapView(_ mapView: MTMapView!, finishedMapMoveAnimation mapCenterPoint: MTMapPoint!) {
+        viewModel.mapCenterPoint.accept(mapCenterPoint)
+    }
+    
+    //  핀 표시 아이템 탭할 경우
+    func mapView(_ mapView: MTMapView!, selectedPOIItem poiItem: MTMapPOIItem!) -> Bool {
+        viewModel.selectPOIItem.accept(poiItem)
+        return false
+    }
+    
+    //  제대로된 현재 위치를 불러오지 못한 경우 오류 처리
+    func mapView(_ mapView: MTMapView!, failedUpdatingCurrentLocationWithError error: Error!) {
+        viewModel.mapViewError.accept(error.localizedDescription)
+    }
+    
+}
+
+//  MARK: -mapView에 center값을 생성
+extension Reactive where Base: MTMapView {
+    var setMapCenterPoint: Binder<MTMapPoint> {
+        return Binder(base) { base, point in
+            //  MTMapView에서 활용되는 setMapCenter를 rxExtension으로 커스텀
+            base.setMapCenter(point, animated: true)
+        }
+    }
+}
+
+//  MARK: - alertController
+extension Reactive where Base: LocationInfoViewController {
+    var presentAlert: Binder<String> {
+        return Binder(base) { base, message in
+            let alertController = UIAlertController(title: "문제 발생", message: message, preferredStyle: .alert)
+            
+            let action = UIAlertAction(title: "확인", style: .default, handler: nil)
+            
+            alertController.addAction(action)
+            
+            base.present(alertController, animated: true,
+            completion:  nil)
         }
     }
 }

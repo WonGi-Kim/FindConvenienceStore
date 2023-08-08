@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B2226CCD2A8218810066159F /* SnapKit-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = B2681C882A820A20002C7B1C /* SnapKit-Dynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		B2226CCF2A821E210066159F /* MTMapViewError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2226CCE2A821E210066159F /* MTMapViewError.swift */; };
+		B2226CD12A8227360066159F /* DetailListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2226CD02A8227360066159F /* DetailListCell.swift */; };
+		B2226CD52A822C260066159F /* DetailListBackgroundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2226CD42A822C260066159F /* DetailListBackgroundViewModel.swift */; };
+		B2226CD92A822DE10066159F /* DetailListBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2226CD82A822DE10066159F /* DetailListBackgroundView.swift */; };
 		B2681B762A80D9E6002C7B1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2681B752A80D9E6002C7B1C /* AppDelegate.swift */; };
 		B2681B782A80D9E6002C7B1C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2681B772A80D9E6002C7B1C /* SceneDelegate.swift */; };
 		B2681B802A80D9E6002C7B1C /* FindConvenienceStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B2681B7E2A80D9E6002C7B1C /* FindConvenienceStore.xcdatamodeld */; };
@@ -59,14 +64,42 @@
 		B2681C7A2A8209F0002C7B1C /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = B2681C792A8209F0002C7B1C /* RxRelay */; };
 		B2681C7C2A8209F0002C7B1C /* RxRelay-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = B2681C7B2A8209F0002C7B1C /* RxRelay-Dynamic */; };
 		B2681C7E2A8209F0002C7B1C /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B2681C7D2A8209F0002C7B1C /* RxSwift */; };
-		B2681C802A8209F0002C7B1C /* RxSwift-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = B2681C7F2A8209F0002C7B1C /* RxSwift-Dynamic */; };
+		B2681C802A8209F0002C7B1C /* RxSwift-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = B2681C7F2A8209F0002C7B1C /* RxSwift-Dynamic */; settings = {ATTRIBUTES = (Required, ); }; };
 		B2681C822A8209F0002C7B1C /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = B2681C812A8209F0002C7B1C /* RxTest */; };
 		B2681C842A8209F0002C7B1C /* RxTest-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = B2681C832A8209F0002C7B1C /* RxTest-Dynamic */; };
 		B2681C872A820A20002C7B1C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B2681C862A820A20002C7B1C /* SnapKit */; };
 		B2681C892A820A20002C7B1C /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = B2681C882A820A20002C7B1C /* SnapKit-Dynamic */; };
+		B2681C8A2A820B27002C7B1C /* RxBlocking-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = B2681C732A8209F0002C7B1C /* RxBlocking-Dynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		B2681C8C2A820B28002C7B1C /* RxCocoa-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = B2681C772A8209F0002C7B1C /* RxCocoa-Dynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		B2681C8D2A820B2A002C7B1C /* RxRelay-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = B2681C7B2A8209F0002C7B1C /* RxRelay-Dynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		B2681C8E2A820B2B002C7B1C /* RxSwift-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = B2681C7F2A8209F0002C7B1C /* RxSwift-Dynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		B2681C8F2A820B2D002C7B1C /* RxTest-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = B2681C832A8209F0002C7B1C /* RxTest-Dynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		B2681C8B2A820B27002C7B1C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B2681C8E2A820B2B002C7B1C /* RxSwift-Dynamic in Embed Frameworks */,
+				B2681C8C2A820B28002C7B1C /* RxCocoa-Dynamic in Embed Frameworks */,
+				B2681C8A2A820B27002C7B1C /* RxBlocking-Dynamic in Embed Frameworks */,
+				B2681C8F2A820B2D002C7B1C /* RxTest-Dynamic in Embed Frameworks */,
+				B2681C8D2A820B2A002C7B1C /* RxRelay-Dynamic in Embed Frameworks */,
+				B2226CCD2A8218810066159F /* SnapKit-Dynamic in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		B2226CCE2A821E210066159F /* MTMapViewError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTMapViewError.swift; sourceTree = "<group>"; };
+		B2226CD02A8227360066159F /* DetailListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListCell.swift; sourceTree = "<group>"; };
+		B2226CD42A822C260066159F /* DetailListBackgroundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListBackgroundViewModel.swift; sourceTree = "<group>"; };
+		B2226CD82A822DE10066159F /* DetailListBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListBackgroundView.swift; sourceTree = "<group>"; };
 		B2681B722A80D9E6002C7B1C /* FindConvenienceStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindConvenienceStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2681B752A80D9E6002C7B1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B2681B772A80D9E6002C7B1C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -218,6 +251,7 @@
 				B2681BDE2A80DBD0002C7B1C /* LocationData.swift */,
 				B2681BE12A80DC53002C7B1C /* KLDocument.swift */,
 				B2681BE32A80DD33002C7B1C /* DetailCellData.swift */,
+				B2226CCE2A821E210066159F /* MTMapViewError.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -286,6 +320,9 @@
 			children = (
 				B2681C6B2A80E299002C7B1C /* LocationInfoViewController.swift */,
 				B2681C6E2A80E314002C7B1C /* LocationInfoViewModel.swift */,
+				B2226CD02A8227360066159F /* DetailListCell.swift */,
+				B2226CD42A822C260066159F /* DetailListBackgroundViewModel.swift */,
+				B2226CD82A822DE10066159F /* DetailListBackgroundView.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -300,6 +337,7 @@
 				B2681B6E2A80D9E6002C7B1C /* Sources */,
 				B2681B6F2A80D9E6002C7B1C /* Frameworks */,
 				B2681B702A80D9E6002C7B1C /* Resources */,
+				B2681C8B2A820B27002C7B1C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -407,11 +445,15 @@
 			files = (
 				B2681BE42A80DD33002C7B1C /* DetailCellData.swift in Sources */,
 				B2681BDF2A80DBD0002C7B1C /* LocationData.swift in Sources */,
+				B2226CD12A8227360066159F /* DetailListCell.swift in Sources */,
 				B2681C6C2A80E299002C7B1C /* LocationInfoViewController.swift in Sources */,
 				B2681BE22A80DC53002C7B1C /* KLDocument.swift in Sources */,
 				B2681B802A80D9E6002C7B1C /* FindConvenienceStore.xcdatamodeld in Sources */,
 				B2681B762A80D9E6002C7B1C /* AppDelegate.swift in Sources */,
+				B2226CD92A822DE10066159F /* DetailListBackgroundView.swift in Sources */,
 				B2681B782A80D9E6002C7B1C /* SceneDelegate.swift in Sources */,
+				B2226CD52A822C260066159F /* DetailListBackgroundViewModel.swift in Sources */,
+				B2226CCF2A821E210066159F /* MTMapViewError.swift in Sources */,
 				B2681C6F2A80E314002C7B1C /* LocationInfoViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -638,8 +680,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/reactivex/rxswift";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
+				kind = exactVersion;
+				version = 6.2.0;
 			};
 		};
 		B2681C852A820A20002C7B1C /* XCRemoteSwiftPackageReference "SnapKit" */ = {
